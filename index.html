@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternal Love | Aravindh X Sreesha</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --font-sans: 'Inter', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+        }
+        body {
+            background-color: #0a0502;
+            color: #d6d3d1;
+            font-family: var(--font-serif);
+            margin: 0;
+            overflow-x: hidden;
+            cursor: none;
+        }
+        .font-sans { font-family: var(--font-sans); }
+        .font-serif { font-family: var(--font-serif); }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0a0502; }
+        ::-webkit-scrollbar-thumb {
+            background: #442a1d;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: #7c2d12; }
+
+        .perspective-2000 { perspective: 2000px; }
+        .origin-left { transform-origin: left; }
+        .origin-right { transform-origin: right; }
+        
+        .cursor-outer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 32px;
+            height: 32px;
+            border: 2px solid rgba(251, 113, 133, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+        }
+        .cursor-inner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background: #fb7185;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: rgba(251, 113, 133, 0.1);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .moment-card {
+            transition: transform 0.3s ease;
+        }
+        .moment-card:hover {
+            transform: translateY(-10px);
+        }
+    </style>
+</head>
+<body class="selection:bg-rose-500/30">
+    <div id="cursor-outer" class="cursor-outer"></div>
+    <div id="cursor-inner" class="cursor-inner"></div>
+    <div id="hearts-container" class="fixed inset-0 pointer-events-none overflow-hidden z-0"></div>
+
+    <div id="main-container" class="relative min-h-[500vh]">
+        
+        <!-- Opening Intro -->
+        <div id="opening-intro" class="sticky top-0 h-screen w-full flex items-center justify-center z-50 pointer-events-none">
+            <div id="cover-overlay" class="absolute inset-0 flex items-center justify-center bg-[#0a0502]">
+                <div class="relative w-full h-full flex items-center justify-center perspective-2000">
+                    <!-- Left Flap -->
+                    <div id="left-flap" class="absolute left-0 w-1/2 h-full bg-[#120a07] border-r border-rose-900/30 flex items-center justify-end pr-12 z-20 shadow-2xl origin-left">
+                        <div class="text-right">
+                            <h2 class="text-rose-400 font-sans tracking-[0.5em] text-xs uppercase mb-4">A Journey</h2>
+                            <div class="text-4xl italic text-stone-500">Of Us</div>
+                        </div>
+                    </div>
+
+                    <!-- Right Flap -->
+                    <div id="right-flap" class="absolute right-0 w-1/2 h-full bg-[#120a07] border-l border-rose-900/30 flex items-center justify-start pl-12 z-20 shadow-2xl origin-right">
+                        <div class="text-left">
+                            <h2 class="text-rose-400 font-sans tracking-[0.5em] text-xs uppercase mb-4">A Gift</h2>
+                            <div class="text-4xl italic text-stone-500">For You</div>
+                        </div>
+                    </div>
+
+                    <!-- Central Heart -->
+                    <div id="central-heart" class="z-30 text-rose-500">
+                        <i data-lucide="heart" fill="currentColor" size="120" class="drop-shadow-[0_0_30px_rgba(244,63,94,0.4)]"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div id="content-wrapper" class="relative z-10 opacity-0 scale-90">
+            
+            <!-- Hero Section -->
+            <section class="h-screen flex flex-col items-center justify-center px-6">
+                <div class="text-center reveal">
+                    <span class="text-rose-400 font-sans uppercase tracking-[0.3em] text-xs mb-4 block">To My Everything</span>
+                    <h1 class="text-6xl md:text-9xl font-light mb-8 tracking-tighter leading-none">
+                        Eternal <span class="italic font-normal text-rose-300">Love</span>
+                    </h1>
+                    <div class="max-w-2xl mx-auto mt-8">
+                        <p class="text-stone-400 text-xl md:text-2xl leading-relaxed font-light italic">
+                            "I thought falling in love meant admiring someone's beauty, but it was really about being so beautiful that others seem like nothing."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Philosophy Section -->
+            <section class="py-40 px-6">
+                <div class="max-w-5xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-20 items-center">
+                        <div class="relative reveal">
+                            <div class="aspect-[3/4] rounded-[40px] overflow-hidden border border-rose-900/20 shadow-2xl">
+                                <img 
+                                    src="https://media.discordapp.net/attachments/1261311956049203333/1483083005797863496/Screenshot_2026-02-25_222041.png?ex=69b94c2e&is=69b7faae&hm=e02781bdd6c6be40904018c060ddc97312d62065c389ed3697c75d12baa2ba7c&=&format=webp&quality=lossless" 
+                                    alt="Love" 
+                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                                    referrerpolicy="no-referrer"
+                                >
+                            </div>
+                            <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-rose-500/10 rounded-full blur-3xl"></div>
+                        </div>
+                        
+                        <div class="reveal">
+                            <i data-lucide="quote" class="text-rose-400 mb-8 opacity-40 w-12 h-12"></i>
+                            <h2 class="text-5xl font-light mb-8 leading-tight">
+                                No One <span class="italic">Can Replace You</span>
+                            </h2>
+                            <p class="text-stone-400 text-lg leading-relaxed mb-8">
+                                The world is full of people, but my heart only has room for one. You've changed what beauty means to me. It's not just a face; it's a soul that makes everything else feel quiet.
+                            </p>
+                            <div class="flex gap-4 items-center text-rose-300 italic text-xl">
+                                <i data-lucide="infinity" class="w-6 h-6"></i>
+                                <span>Always and forever.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Amazing Moments -->
+            <section class="py-40 bg-stone-900/10 relative overflow-hidden">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8 reveal">
+                        <div>
+                            <span class="text-rose-400 font-sans uppercase tracking-[0.3em] text-xs mb-4 block">The Gallery</span>
+                            <h2 class="text-6xl font-light italic">Amazing Moments</h2>
+                        </div>
+                        <p class="text-stone-500 max-w-xs italic">
+                            A collection of snapshots from our beautiful journey together.
+                        </p>
+                    </div>
+
+                    <div id="moments-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Moments will be injected by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reasons Why -->
+            <section class="py-40 px-6 bg-rose-950/5">
+                <div class="max-w-4xl mx-auto text-center">
+                    <i data-lucide="sparkles" class="text-rose-400 mx-auto mb-12 opacity-50 w-10 h-10"></i>
+                    <h2 class="text-5xl font-light mb-20 italic reveal">Reasons Why My Heart Chose You</h2>
+                    
+                    <div id="reasons-grid" class="grid md:grid-cols-2 gap-x-12 gap-y-8 text-left">
+                        <!-- Reasons will be injected by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Future Dreams -->
+            <section class="py-40 px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="bg-[#120a07] rounded-[60px] p-12 md:p-24 relative overflow-hidden border border-rose-900/10 reveal">
+                        <div class="relative z-10 grid md:grid-cols-2 gap-16 items-center">
+                            <div>
+                                <h2 class="text-5xl font-light mb-8">Our <span class="italic text-rose-300">Tomorrow</span></h2>
+                                <p class="text-stone-400 text-lg leading-relaxed mb-10">
+                                    The best is yet to come. I dream of traveling the world with you, building a home filled with laughter, and growing old while still looking at you with the same wonder I do today.
+                                </p>
+                                <div class="space-y-6">
+                                    <div class="flex items-center gap-4 text-stone-300">
+                                        <div class="text-rose-400"><i data-lucide="map-pin"></i></div>
+                                        <span class="italic">Exploring hidden gems together</span>
+                                    </div>
+                                    <div class="flex items-center gap-4 text-stone-300">
+                                        <div class="text-rose-400"><i data-lucide="sun"></i></div>
+                                        <span class="italic">Waking up to your smile every morning</span>
+                                    </div>
+                                    <div class="flex items-center gap-4 text-stone-300">
+                                        <div class="text-rose-400"><i data-lucide="stars"></i></div>
+                                        <span class="italic">Chasing our biggest dreams side by side</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <div class="aspect-square rounded-full overflow-hidden border-4 border-rose-900/20 p-4">
+                                    <img 
+                                        src="https://media.discordapp.net/attachments/1261311956049203333/1483083005797863496/Screenshot_2026-02-25_222041.png?ex=69b94c2e&is=69b7faae&hm=e02781bdd6c6be40904018c060ddc97312d62065c389ed3697c75d12baa2ba7c&=&format=webp&quality=lossless" 
+                                        alt="Future" 
+                                        class="w-full h-full object-cover rounded-full"
+                                        referrerpolicy="no-referrer"
+                                    >
+                                </div>
+                                <div id="rotating-border" class="absolute -inset-4 border border-dashed border-rose-400/20 rounded-full animate-[spin_20s_linear_infinite]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Playlist -->
+            <section class="py-40 px-6 text-center">
+                <i data-lucide="music" class="text-rose-400 mx-auto mb-8 w-8 h-8"></i>
+                <h2 class="text-4xl font-light mb-12 italic reveal">The Soundtrack of Us</h2>
+                <div id="playlist-container" class="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+                    <!-- Playlist will be injected by JS -->
+                </div>
+            </section>
+
+            <!-- Final Promise -->
+            <section class="py-60 px-6 relative">
+                <div class="max-w-2xl mx-auto text-center relative z-10 reveal">
+                    <div class="space-y-10">
+                        <i data-lucide="heart" class="text-rose-500 mx-auto mb-6 fill-rose-500/10 w-12 h-12"></i>
+                        <h2 class="text-6xl font-light leading-tight">
+                            My Promise <span class="italic">To You</span>
+                        </h2>
+                        <div class="w-24 h-px bg-rose-400/30 mx-auto"></div>
+                        <p class="text-stone-200 text-2xl leading-relaxed font-light italic">
+                            "In a world of billions, my eyes will always find you. You are my home, my peace, and my greatest adventure. No one and nothing can ever replace you."
+                        </p>
+                        <div class="pt-16">
+                            <button class="px-12 py-5 bg-rose-500/10 border border-rose-400/40 rounded-full text-rose-300 hover:bg-rose-500/20 transition-all duration-500 flex items-center gap-4 mx-auto group">
+                                <i data-lucide="infinity" class="w-5 h-5 group-hover:rotate-180 transition-transform duration-1000"></i>
+                                <span class="tracking-widest uppercase text-xs font-sans font-semibold">Always & Forever Yours :3</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Background Glows -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-rose-900/10 rounded-full blur-[180px] -z-10"></div>
+                <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-orange-900/5 rounded-full blur-[150px] -z-10"></div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="py-20 border-t border-stone-900/50 text-center bg-[#0a0502]">
+                <div class="flex justify-center gap-6 mb-8 text-stone-600">
+                    <i data-lucide="sun" class="w-4.5 h-4.5"></i>
+                    <i data-lucide="moon" class="w-4.5 h-4.5"></i>
+                    <i data-lucide="cloud" class="w-4.5 h-4.5"></i>
+                </div>
+                <p class="text-stone-600 text-xs font-sans tracking-[0.4em] uppercase">
+                    Aravindh X Sreesha • <span id="year"></span>
+                </p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
